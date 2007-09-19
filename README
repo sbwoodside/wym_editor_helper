@@ -24,7 +24,7 @@ Installation
 Follow these steps to use:
 
 	* From your project's root, run:
-		ruby script/plugin install svn://zuurstof.openminds.be/home/kaizer/svn/wym_editor_helper
+		ruby script/plugin install svn://zuurstof.openminds.be/home/kaizer/svn/rails_stuff/plugins/wym_editor_helper
 		rake wym:install
 	* Put <%= wym_editor_initialize %> in the view that will host the text editing form.
 	Prefereably this goes into the HEAD section, to keep your html W3C valid. 
