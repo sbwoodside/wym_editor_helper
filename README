@@ -1,0 +1,30 @@
+WymEditorHelper
+===============
+makes it easy to incorporate WYMeditor into your views. 
+Follow these steps to use:
+
+	* ruby script/plugin install svn://zuurstof.openminds.be/home/kaizer/svn/wym_editor_helper
+	* rake wym:install
+	* Put <%= wym_editor_initialize %> in the view that will host the text editing form.
+	Prefereably this goes into your html's HEAD, to keep our html W3C valid. 
+	I use <%= wym_editor_initialize unless !%w(new create edit).include?(@controller.action_name) -%> in my layout. 
+	This means the editor will only load when someone is creating or editing something.
+	* create a database, and a model with ie. a content column.
+	* in the form, instead of text_area, use <%= wym_editor :model, :content%>
+
+This plugin uses WYMeditor 0.3, which is still alpha (REV 227 19/04/2007).
+When 0.3 hits stable, this plugin will also be updated.
+
+Credits to Dave Olsen and Chris Scharf over at WVU ( http://webservices.wvu.edu/ ) 
+for making Textile Editor Helper, which inspired me to put WYM on Rails.
+
+
+WymEMeditor : what you see is What You Mean web-based editor
+Copyright (C) 2007 H.O.net - http://www.honet.be/
+Dual licensed under the MIT (MIT-license.txt)
+and GPL (GPL-license.txt) licenses.
+
+For further information visit:
+		http://www.wymeditor.org/
+
+WYMeditor documentation is available online at http://www.wymeditor.org/
