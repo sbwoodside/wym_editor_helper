@@ -4,22 +4,15 @@ namespace :wym do
   
   desc 'Installs required assets'
   task :install do
-    #ENV['FORCE'] = true
-    #Rake::Task[:update].invoke
-    #force = ENV['FORCE'] || false
     verbose = true
     ASSET_FILES.each do |file|
       path = File.dirname(file) + '/'
       path.gsub!(PLUGIN_ROOT, RAILS_ROOT)
       path.gsub!('assets', 'public')
       destination = File.join(path, File.basename(file))
-      puts " * Copying %-50s to %s" % [file.gsub(PLUGIN_ROOT, ''), destination.gsub(RAILS_ROOT, '')] if verbose
+      puts " * Copying %-50s to %s" % [file.gsub(PLUGIN_ROOT, ''), destination.gsub(RAILS_ROOT, '')]
       FileUtils.mkpath(path) unless File.directory?(path)
-      
-      #puts File.mtime(file), File.mtime(destination)
-      #if force || !FileUtils.identical?(file, destination)
       FileUtils.cp [file], path
-      #end  
     end    
   end
   
@@ -30,7 +23,7 @@ namespace :wym do
       path.gsub!(PLUGIN_ROOT, RAILS_ROOT)
       path.gsub!('assets', 'public')
       path = File.join(path, File.basename(file))
-      puts ' * Removing %s' % path.gsub(RAILS_ROOT, '') if verbose
+      puts ' * Removing %s' % path.gsub(RAILS_ROOT, '')
       FileUtils.rm [path]
     end
   end
