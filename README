@@ -28,9 +28,8 @@ Follow these steps to use:
 		rake wym:install
 	* Put <%= wym_editor_initialize %> in the view that will host the text editing form.
 	Prefereably this goes into your html's HEAD, to keep our html W3C valid. 
-	I use <%= wym_editor_initialize unless !%w(new create edit).include?(@controller.action_name) -%> in my layout. 
+	I use <%= wym_editor_initialize unless !%w(new create edit update).include?(@controller.action_name) -%> in my layout. 
 	This means the editor will only load when someone is creating or editing something.
-	* create a database, and a model with ie. a content column.
 	* in the form, instead of i.e. <%= text_area :article, :content %>, use <%= wym_editor :article, :content %>
 	OR add a 'wymeditor' class to the textarea
 	* add a 'wymupdate' class to the submit button
