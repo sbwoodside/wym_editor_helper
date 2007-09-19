@@ -1,8 +1,6 @@
-<script type="text/javascript">
-	var $j = jQuery;
-	$j(function() {
-    $j(".wymeditor").wymeditor();
-    //enable the default skin
-    $j(".wym_box").addClass("wym_skin_default");
-	});
-</script>
+jQuery(function() {
+	jQuery('.wymeditor').wymeditor({
+        xhtmlParser: 'xhtml_parser.js',
+        cssParser:   'wym_css_parser.js',
+    });
+});
