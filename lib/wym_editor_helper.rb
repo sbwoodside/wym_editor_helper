@@ -22,6 +22,7 @@ module WymEditorHelper
     output << javascript_include_tag('/wymeditor/wymeditor/jquery.wymeditor.explorer.js')
     output << javascript_include_tag('/wymeditor/wymeditor/jquery.wymeditor.mozilla.js')
     output << javascript_include_tag('/wymeditor/wymeditor/jquery.wymeditor.opera.js')
+    output << javascript_include_tag('/wymeditor/wymeditor/jquery.wymeditor.safari.js')
     output << javascript_include_tag('/javascripts/boot_wym.js')
     output.join("\n")
   end
