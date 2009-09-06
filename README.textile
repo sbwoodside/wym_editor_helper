@@ -1,0 +1,75 @@
+h2. WymEditorHelper
+
+Makes it easy to incorporate WYMeditor into your views.
+
+
+h3. About WYM
+
+WYMeditor is a web-based WYSIWYM XHTML editor.
+
+WYMeditor's main concept is to leave details of the document's visual layout, and to concentrate on its structure and meaning, while trying to give the user as much comfort as possible (at least as WYSIWYG editors).
+
+WYMeditor has been created to generate perfectly structured XHTML strict code, to conform to the W3C XHTML specifications and to facilitate further processing by modern applications.
+
+With WYMeditor, the code can't be contaminated by visual informations like font styles and weights, borders, colors, ...
+The end-user defines content meaning, which will determine its aspect by the use of style sheets. The result is easy and quick maintenance of information.
+
+As the code is compliant to W3C XHTML specifications, you can for example process it using a XSLT (at the client or the server side), giving you a wide range of applications.
+
+Read more about WYM at http://www.wymeditor.org/
+
+
+h3. Installation
+
+Follow these steps to use:
+
+1. From your project's root, run:
+<pre><code>  % ruby script/plugin install git://github.com/sbwoodside/wym_editor_helper.git
+  % rake wym:install
+</code></pre>
+
+2. Put @<%= wym_editor_initialize %>@ in the view that will host the text editing form.
+   Preferably this goes into the HEAD section, to keep your html W3C valid. 
+   Use @<% content_for :head do %> <%= wym_editor_initialize %> <% end %>@ in the view that needs the editor, and @<%= yield :head %>@ in the layout. This means the editor will only load when it is truly called for. (Thanks Steven Soroka over at http://www.clearlinewebsystems.ca/)
+
+3. In the form, instead of i.e. @<%= text_area :article, :content %>@, use @<%= wym_editor :article, :content %>@ ... OR add a @'wymeditor'@ class to the @textarea@.
+
+4. Add a @'wymupdate'@ class to the submit button.
+
+
+h3. Un-Installation
+
+To remove WYMeditor files from your public directory, use:
+<pre><code>  % rake wym:uninstall
+</code></pre>
+  
+Note that the uninstall script may not work correctly if you've changed the version of WYMeditor that you have in the assets directory.
+
+You can also simply delete public/wymeditor and public/javascripts/boot_wym.js.
+
+
+h3. Upgrading the version of WYMeditor
+
+Wym Editor Plugin comes with WYMeditor Javascripts included. From time to time the WYMeditor project will update them. Since those files are included as a git submodule, you can pull a new version using:
+<pre><code>  % cd vendor/plugin/wym_editor_helper
+  % git submodule update
+</code></pre>
+
+Or, you can go to the WYMeditor home page http://www.wymeditor.org/ and download a newer version from them.
+
+Keep in mind that if you check out a newer version of WYM, you need to re-run the wym:install rake command to actually copy the wym files to the public dir. If you do so, be sure to first back up your configuration file (/javascripts/boot_wym.js) if you made any changes to it.  For completeness, you may also want to delete the installed wym in your project's /public/wymeditor folder before running the wym:install rake command.
+
+For possible configuration options, you can look at the examples provided in /wymeditor/tests (the ones in /wymeditor/examples are not working at this moment).
+
+Also have a look at the WYMeditor trac for more documentation:
+http://trac.wymeditor.org/trac/wiki
+
+
+h3. Contributors
+
+* Simon Woodside
+* Philip Arndt
+* Steven Soroka
+* Helmut Ebritsch
+* Benny Degezelle
+
