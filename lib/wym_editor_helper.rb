@@ -15,8 +15,12 @@ module WymEditorHelper
   def wym_editor_initialize(*dom_ids)
     editor_ids = (@wym_editor_ids || []) + wym_extract_dom_ids(*dom_ids)
     output = []
-    output << javascript_include_tag('/wymeditor/jquery/jquery.js')
-    output << javascript_include_tag('/wymeditor/wymeditor/jquery.wymeditor.pack.js')
+    output << javascript_include_tag('/wymeditor/jquery/jquery')
+    unless RAILS_ENV =~ /(production)|(test)/
+      output << javascript_include_tag('/wymeditor/wymeditor/jquery.wymeditor.js')
+    else
+      output << javascript_include_tag('/wymeditor/wymeditor/jquery.wymeditor.pack.js')
+    end
     output << javascript_include_tag('/javascripts/boot_wym.js')
     output.join("\n")
   end
