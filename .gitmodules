@@ -1,0 +1,3 @@
+[submodule "assets/wymeditor"]
+	path = assets/wymeditor
+	url = git://github.com/sbwoodside/wymeditor.git
